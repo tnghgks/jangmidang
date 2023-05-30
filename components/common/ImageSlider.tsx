@@ -42,18 +42,15 @@ export default function ImageSlider({ images = [] }: IProps) {
           alt={images[current]}
           className={`w-full h-full object-cover shrink-0 select-none select-none`}
         />
-
         <BsChevronCompactLeft
           onClick={prevSlide}
-          className="hidden  group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer select-none"
+          className="hidden group-hover:block absolute top-[50%] translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer select-none w-10 h-10"
         />
-
         <BsChevronCompactRight
           onClick={nextSlide}
-          className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer select-none"
+          className="hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer select-none w-10 h-10"
         />
-
-        <div className="absolute flex gap-1 left-1/2 bottom-0 pb-1">
+        <div className="absolute flex gap-1 left-1/2 translate-x-[-50%] bottom-0 pb-1 b">
           {images.map((_, i) => (
             <img
               onClick={() => moveSlide(i)}
