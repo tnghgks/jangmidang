@@ -6,13 +6,15 @@ interface IProps {
 
 export default function IframePlayer({ src }: PropsWithChildren<IProps>) {
   return (
-    <iframe
-      width="100%"
-      style={{ aspectRatio: 16 / 9 }}
-      src={src}
-      title="YouTube video player"
-      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowFullScreen
-    />
+    <div className="max-w-5xl w-full">
+      <iframe
+        width="100%"
+        style={{ aspectRatio: 16 / 9 }}
+        src={src}
+        title="YouTube video player"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+      />
+    </div>
   );
 }
