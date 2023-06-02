@@ -1,6 +1,6 @@
 export default function FooterInfo() {
   return (
-    <dl className="grid grid-cols-2 mt-5 text-white gap-1">
+    <dl className="grid grid-cols-2 mt-5 text-white gap-3">
       <dt className="font-bold">상호명</dt>
       <dd>{process.env.NEXT_PUBLIC_Name}</dd>
       <dt className="font-bold">대표자</dt>

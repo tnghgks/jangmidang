@@ -6,15 +6,13 @@ interface IProps {
 }
 
 export default function SocialBtn({ src, icon }: PropsWithChildren<IProps>) {
-  if (typeof icon === "string") {
-    return (
-      <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-        <img src={icon} alt="icon" />
-      </div>
-    );
-  }
+  const isSrc = typeof icon === "string";
 
   return (
-    <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">{icon}</div>
+    <a href={src}>
+      <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
+        {isSrc ? <img src={icon} alt="icon" /> : icon}
+      </div>
+    </a>
   );
 }
