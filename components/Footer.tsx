@@ -1,7 +1,7 @@
 "use client";
 
 import SocialBtn from "./SocialBtn";
-import { RiKakaoTalkFill, RiInstagramFill } from "react-icons/ri";
+import { RiKakaoTalkFill } from "react-icons/ri";
 import { SiNaver } from "react-icons/si";
 import FooterInfo from "./FooterInfo";
 
