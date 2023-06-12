@@ -12,7 +12,7 @@ export default function Header() {
 
   return (
     <header
-      className={`flex fixed top-0 left-0 w-full justify-between items-center px-10 pt-5 h-20 z-10  duration-500 ${
+      className={`flex fixed top-0 left-0 w-full justify-between items-center px-10 pt-5 h-20 z-20  duration-500 ${
         isHide ? "opacity-0" : "opacity-100"
       } hover:opacity-100 hover:duration-200`}
     >

@@ -18,7 +18,13 @@ const sizes = {
   lg: "w-16 h-16",
 };
 
-export default function Icon({ icon, size = "md", color = "white", className, ...rest }: IProps) {
+export default function Icon({
+  icon,
+  size = "md",
+  color = "white",
+  className = "",
+  ...rest
+}: IProps) {
   const iconOption = `${sizes[size]} ${colors[color]}`;
 
   return (
