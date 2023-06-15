@@ -2,6 +2,11 @@ import TagList from "@/components/moecules/TagList";
 import FilterHeader from "@/components/organisms/FilterHeader";
 import ProductCardList from "@/components/organisms/ProductCardList";
 
+export const metadata = {
+  title: "단품메뉴 | 장미당",
+  description: "전통디저트 단품메뉴 소개,",
+};
+
 export default function page() {
   return (
     <div className="bg-slate-100 p-5 min-h-screen">
