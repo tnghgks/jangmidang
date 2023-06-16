@@ -15,10 +15,10 @@ export default async function page() {
   const products = await Products.find({ type: ["giftSet"] });
 
   return (
-    <>
+    <div className="bg-slate-100 p-5 min-h-screen">
       <FilterHeader />
       <TagList tagList={["test", "Test"]} />
       <ProductCardList products={products} />
-    </>
+    </div>
   );
 }
