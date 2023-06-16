@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={inter.className}>
         <Header />
-        {children}
+        <div className="bg-slate-100 p-5 min-h-screen">{children}</div>
         <Footer />
       </body>
     </html>
