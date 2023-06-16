@@ -1,51 +1,24 @@
 import TagList from "@/components/moecules/TagList";
 import FilterHeader from "@/components/organisms/FilterHeader";
 import ProductCardList from "@/components/organisms/ProductCardList";
+import dbConnect from "@/lib/db/dbConnect";
+import Products from "@/lib/db/models/Products";
 
 export const metadata = {
   title: "단품메뉴 | 장미당",
   description: "전통디저트 단품메뉴 소개,",
 };
 
-export default function page() {
+export default async function page() {
+  await dbConnect();
+
+  const products = await Products.find({ type: ["singleMenu"] });
+
   return (
-    <div className="bg-slate-100 p-5 min-h-screen">
+    <>
       <FilterHeader />
       <TagList tagList={["test", "Test"]} />
-      <ProductCardList
-        cards={[
-          {
-            id: 1,
-            img: "https://jangmidang.s3.ap-northeast-2.amazonaws.com/a430ef4f75ff49f7b9d74d71fadb0801.jpg",
-            title: "제목",
-            description: "설명",
-          },
-          {
-            id: 2,
-            img: "https://jangmidang.s3.ap-northeast-2.amazonaws.com/a430ef4f75ff49f7b9d74d71fadb0801.jpg",
-            title: "제목",
-            description: "설명",
-          },
-          {
-            id: 3,
-            img: "https://jangmidang.s3.ap-northeast-2.amazonaws.com/a430ef4f75ff49f7b9d74d71fadb0801.jpg",
-            title: "제목",
-            description: "설명",
-          },
-          {
-            id: 4,
-            img: "https://jangmidang.s3.ap-northeast-2.amazonaws.com/a430ef4f75ff49f7b9d74d71fadb0801.jpg",
-            title: "제목",
-            description: "설명",
-          },
-          {
-            id: 5,
-            img: "https://jangmidang.s3.ap-northeast-2.amazonaws.com/a430ef4f75ff49f7b9d74d71fadb0801.jpg",
-            title: "제목",
-            description: "설명",
-          },
-        ]}
-      />
-    </div>
+      <ProductCardList products={products} />
+    </>
   );
 }

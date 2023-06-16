@@ -50,7 +50,7 @@ export default function Input({ size = "sm", color = "white", rounded = "full", 
       )}
       <input
         type="text"
-        className={`relative outline-none duration-300 -z-10 ${toggle ? inputOption : off[size]}`}
+        className={`relative outline-none duration-300 ${toggle ? inputOption : off[size]}`}
       />
     </div>
   );
