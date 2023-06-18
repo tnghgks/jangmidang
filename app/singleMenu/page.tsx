@@ -4,6 +4,8 @@ import ProductCardList from "@/components/organisms/ProductCardList";
 import dbConnect from "@/lib/db/dbConnect";
 import Products from "@/lib/db/models/Products";
 
+export const revalidate = 60;
+
 export const metadata = {
   title: "단품메뉴 | 장미당",
   description: "전통디저트 단품메뉴 소개,",
