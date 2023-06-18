@@ -1,6 +1,6 @@
 "use client";
 
-import useOnScrollHide from "@/lib/hooks/useOnScrollHide";
+import useOnScrollHide from "@/app/lib/hooks/useOnScrollHide";
 import { useState } from "react";
 import { RiMenuLine } from "react-icons/ri";
 import Icon from "./atoms/Icon";

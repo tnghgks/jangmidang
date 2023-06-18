@@ -1,8 +1,8 @@
-import TagList from "@/components/molecule/TagList";
-import FilterHeader from "@/components/organisms/FilterHeader";
-import ProductCardList from "@/components/organisms/ProductCardList";
-import dbConnect from "@/lib/db/dbConnect";
-import Products from "@/lib/db/models/Products";
+import TagList from "@/app/components/molecule/TagList";
+import FilterHeader from "@/app/components/organisms/FilterHeader";
+import ProductCardList from "@/app/components/organisms/ProductCardList";
+import dbConnect from "@/app/lib/db/dbConnect";
+import Products from "@/app/lib/db/models/Products";
 
 export const revalidate = 60;
 
