@@ -1,6 +1,6 @@
-import ImageSlider from "@/components/common/ImageSlider";
-import IntroCard from "@/components/IntroCard";
-import IframePlayer from "@/components/common/IframePlayer";
+import ImageSlider from "@/app/components/common/ImageSlider";
+import IntroCard from "@/app/components/IntroCard";
+import IframePlayer from "@/app/components/common/IframePlayer";
 
 export default function Home() {
   return (

@@ -1,4 +1,4 @@
-import { IProduct } from "@/types/product";
+import { IProduct } from "@/app/types/product";
 
 interface IProps {
   productData: IProduct;

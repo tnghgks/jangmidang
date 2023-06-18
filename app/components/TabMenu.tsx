@@ -1,6 +1,6 @@
 "use client";
 
-import { tabMenuList } from "@/constant/tabMenuList";
+import { tabMenuList } from "@/app/constant/tabMenuList";
 import Link from "next/link";
 import { Dispatch, PropsWithChildren, SetStateAction } from "react";
 import { RiMenuLine } from "react-icons/ri";
