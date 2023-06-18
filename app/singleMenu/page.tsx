@@ -1,4 +1,4 @@
-import TagList from "@/components/moecules/TagList";
+import TagList from "@/components/molecule/TagList";
 import FilterHeader from "@/components/organisms/FilterHeader";
 import ProductCardList from "@/components/organisms/ProductCardList";
 import dbConnect from "@/lib/db/dbConnect";

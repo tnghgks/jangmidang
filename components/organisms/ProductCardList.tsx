@@ -1,5 +1,5 @@
 import { IProduct } from "@/types/product";
-import ProductCard from "../moecules/ProductCard";
+import ProductCard from "../molecule/ProductCard";
 
 interface IProps {
   products: IProduct[];

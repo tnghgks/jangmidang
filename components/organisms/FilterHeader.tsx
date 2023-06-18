@@ -1,5 +1,5 @@
-import FilterButton from "../moecules/FilterButton";
-import SearchBar from "../moecules/SearchBar";
+import FilterButton from "../molecule/FilterButton";
+import SearchBar from "../molecule/SearchBar";
 
 export default function FilterHeader() {
   return (
