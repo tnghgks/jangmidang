@@ -8,5 +8,5 @@ export const metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return <div className="bg-slate-300 w-[60%] mx-auto h-screen">{children}</div>;
 }
