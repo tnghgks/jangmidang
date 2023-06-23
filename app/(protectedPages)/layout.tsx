@@ -1,4 +1,5 @@
 import "@/app/globals.css";
+import AdminHeader from "../components/molecule/AdminHeader";
 
 export const metadata = {
   title: "관리자 페이지 | 전통 디저트",
@@ -8,5 +9,10 @@ export const metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return <div className="bg-slate-300 w-[60%] mx-auto h-screen">{children}</div>;
+  return (
+    <div className="w-[60%] mx-auto h-screen">
+      <AdminHeader />
+      <div className="bg-slate-300 mt-5">{children}</div>
+    </div>
+  );
 }
