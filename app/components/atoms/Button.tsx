@@ -1,11 +1,11 @@
-import { PropsWithChildren } from "react";
+import { MouseEventHandler, PropsWithChildren } from "react";
 
 interface IProps {
   size?: "sm" | "md" | "lg";
   color?: "white" | "black";
   rounded?: "full" | "top" | "bottom" | "none";
   variant?: "normal" | "blue" | "teal";
-  onClick?: () => void;
+  onClick?: MouseEventHandler;
 }
 
 const sizes = {
@@ -44,12 +44,12 @@ export default function Button({
   const inputOption = `${sizes[size]} ${colors[color]} ${radius[rounded]} ${variants[variant]}`;
 
   return (
-    <div
-      className={`h-full rounded-t-md leading-loose cursor-pointer ${inputOption}`}
+    <button
+      className={`h-full leading-loose cursor-pointer ${inputOption}`}
       onClick={onClick}
       {...prop}
     >
       {children}
-    </div>
+    </button>
   );
 }
