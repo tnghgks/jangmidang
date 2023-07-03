@@ -10,7 +10,7 @@ export default function SearchBar() {
   return (
     <form>
       <Input
-        size="lg"
+        scale="lg"
         icon={<Icon icon={<FaSearch size={24} />} size="lg" onClick={handleClick} />}
       />
     </form>
