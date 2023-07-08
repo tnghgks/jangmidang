@@ -1,17 +1,12 @@
-import {
-  ComponentPropsWithoutRef,
-  HTMLInputTypeAttribute,
-  InputHTMLAttributes,
-  ReactElement,
-  useState,
-} from "react";
+import { ComponentProps, ReactElement, useState } from "react";
 
-interface IProps extends ComponentPropsWithoutRef<"input"> {
+interface IProps extends ComponentProps<"input"> {
   scale?: "sm" | "md" | "lg";
   color?: "white" | "black";
   rounded?: "full" | "none";
   icon?: ReactElement;
   shadow?: "none" | "sm" | "md" | "lg";
+  className?: string;
 }
 const shadowType = {
   none: "shadow-none",
@@ -48,6 +43,8 @@ export default function Input({
   rounded = "full",
   icon,
   shadow = "none",
+  ref,
+  className,
   ...props
 }: IProps) {
   const [toggle, setToggle] = useState(false);
@@ -58,7 +55,14 @@ export default function Input({
   };
 
   if (!icon) {
-    return <input type="text" className={`outline-none duration-300 ${inputOption}`} {...props} />;
+    return (
+      <input
+        type="text"
+        ref={ref}
+        className={`outline-none duration-300 ${inputOption} ${className}`}
+        {...props}
+      />
+    );
   }
 
   return (
@@ -70,7 +74,10 @@ export default function Input({
       )}
       <input
         type="text"
-        className={`relative outline-none duration-300 ${toggle ? inputOption : off[scale]}`}
+        ref={ref}
+        className={`relative outline-none duration-300 ${
+          toggle ? inputOption : off[scale]
+        } ${className}`}
         {...props}
       />
     </div>
