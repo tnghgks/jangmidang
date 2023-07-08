@@ -1,6 +1,6 @@
-import { MouseEventHandler, PropsWithChildren } from "react";
+import { ComponentPropsWithoutRef, MouseEventHandler, PropsWithChildren } from "react";
 
-interface IProps {
+interface IProps extends ComponentPropsWithoutRef<"button"> {
   size?: "sm" | "md" | "lg";
   color?: "white" | "black";
   rounded?: "full" | "top" | "bottom" | "none";
