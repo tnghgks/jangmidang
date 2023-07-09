@@ -1,6 +1,6 @@
 import AWS from "aws-sdk";
 
-export const uploadS3 = (file: FileList, filename: string) => {
+export const uploadS3 = (file: File, filename: string) => {
   const REGION = process.env.NEXT_PUBLIC_AWS_REGION;
   const ACCESS_KEY_ID = process.env.NEXT_PUBLIC_AWS_ACCESS_KEY_ID;
   const SECRET_ACCESS_KEY_ID = process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY_ID;
