@@ -4,7 +4,7 @@ import { IProduct } from "@/app/types/product";
 import Button from "../atoms/Button";
 import { useState } from "react";
 import Modal from "./Modal";
-import ProductForm from "./ProductForm";
+import ProductAddForm from "./ProductAddForm";
 
 interface IProps {
   products: IProduct[];
@@ -52,7 +52,7 @@ export default function ProductView({ products }: IProps) {
       </div>
       {isOpenModal && (
         <Modal setClose={setIsOpenModal}>
-          <ProductForm />
+          <ProductAddForm />
         </Modal>
       )}
     </div>
