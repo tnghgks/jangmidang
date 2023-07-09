@@ -6,6 +6,7 @@ interface IProps extends ComponentPropsWithoutRef<"button"> {
   rounded?: "full" | "top" | "bottom" | "none";
   variant?: "normal" | "blue" | "teal";
   onClick?: MouseEventHandler;
+  className?: string;
 }
 
 const sizes = {
@@ -39,13 +40,14 @@ export default function Button({
   variant = "normal",
   onClick,
   children,
+  className,
   ...prop
 }: PropsWithChildren<IProps>) {
   const inputOption = `${sizes[size]} ${colors[color]} ${radius[rounded]} ${variants[variant]}`;
 
   return (
     <button
-      className={`h-full leading-loose cursor-pointer ${inputOption}`}
+      className={`h-full leading-loose cursor-pointer ${inputOption} ${className}`}
       onClick={onClick}
       {...prop}
     >
