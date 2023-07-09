@@ -1,9 +1,13 @@
-import { Dispatch, PropsWithChildren, SetStateAction } from "react";
+"use client";
+
+import { Dispatch, PropsWithChildren, SetStateAction, createContext } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 interface IProps {
   setClose: Dispatch<SetStateAction<boolean>>;
 }
+
+export const ModalContext = createContext<() => void>(() => {});
 
 export default function Modal({ setClose, children }: PropsWithChildren<IProps>) {
   const onClose = () => setClose(false);
@@ -15,7 +19,7 @@ export default function Modal({ setClose, children }: PropsWithChildren<IProps>)
         size={20}
         onClick={onClose}
       />
-      {children}
+      <ModalContext.Provider value={onClose}>{children}</ModalContext.Provider>
     </div>
   );
 }
