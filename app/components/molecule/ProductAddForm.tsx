@@ -7,10 +7,12 @@ import { createProducts } from "@/app/lib/api/product";
 import { IProduct } from "@/app/types/product";
 import { uploadS3 } from "@/app/lib/api/uploadS3";
 import { ModalContext } from "./Modal";
+import { useRouter } from "next/navigation";
 
 type ProductKey = keyof IProduct;
 
 export default function ProductAddForm() {
+  const router = useRouter();
   const [imgSrc, setImgSrc] = useState("");
   const [imgFile, setImgFile] = useState<File>();
   const imgRef = useRef<HTMLInputElement>(null);
@@ -37,6 +39,7 @@ export default function ProductAddForm() {
     });
 
     if (product) onClose();
+    router.refresh();
   };
 
   const handleUploadImg = () => {

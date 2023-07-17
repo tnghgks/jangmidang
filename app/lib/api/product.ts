@@ -7,3 +7,12 @@ export const createProducts = async (productData: any) => {
 
   return data;
 };
+export const deleteProducts = async (productsId: any) => {
+  const ids = productsId.map((id: string) => `id=${id}`).join("&");
+
+  const { data } = await axiosInstance.delete(`/api/products?${ids}`);
+
+  if (data) alert("정상적으로 삭제되었습니다.");
+
+  return data;
+};

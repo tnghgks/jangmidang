@@ -5,19 +5,35 @@ import Button from "../atoms/Button";
 import { useState } from "react";
 import Modal from "./Modal";
 import ProductAddForm from "./ProductAddForm";
+import { deleteProducts } from "@/app/lib/api/product";
+import { useRouter } from "next/navigation";
 
 interface IProps {
   products: IProduct[];
 }
 
 export default function ProductView({ products }: IProps) {
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const router = useRouter();
+  const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+  const [checkList, setCheckList] = useState<string[]>([]);
 
   const handleAddProduct = () => {
     setIsOpenModal(true);
   };
 
-  const handleDeleteProduct = () => {};
+  const handleDeleteProduct = async (e: any) => {
+    await deleteProducts(checkList);
+    router.refresh();
+  };
+
+  const toggleCheckList = (e: any) => {
+    const id = e.target.value;
+    if (checkList.includes(id)) {
+      setCheckList((prev) => prev.filter((item) => item !== id));
+    } else {
+      setCheckList((prev) => [...prev, id]);
+    }
+  };
 
   return (
     <div className="p-5 overflow-x-hidden h-80">
@@ -36,7 +52,7 @@ export default function ProductView({ products }: IProps) {
             key={data._id}
             className="bg-slate-400 p-2 grid grid-cols-7 text-sm items-center text-center"
           >
-            <input type="checkbox" className="w-5 h-5" />
+            <input type="checkbox" className="w-5 h-5" value={data._id} onClick={toggleCheckList} />
             <img src={data.thumbnail} alt={data.title} />
             <strong>{data.title}</strong>
             <strong>{data.price}원</strong>
