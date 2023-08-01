@@ -6,8 +6,10 @@ import Footer from "./components/Footer";
 import Banner from "./lib/db/models/Banner";
 import dbConnect from "./lib/db/dbConnect";
 
+export const revalidate = 60;
+
 export default async function Home() {
-  await dbConnect()
+  await dbConnect();
   const mainBanner = await Banner.findOne({ title: "mainBanner" });
 
   if (!mainBanner) return;
