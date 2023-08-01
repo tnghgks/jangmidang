@@ -5,9 +5,9 @@ import Input from "../atoms/Input";
 import Button from "../atoms/Button";
 import { createProducts } from "@/app/lib/api/product";
 import { IProduct } from "@/app/types/product";
-import { uploadS3 } from "@/app/lib/api/uploadS3";
 import { ModalContext } from "./Modal";
 import { useRouter } from "next/navigation";
+import AwsS3 from "@/app/lib/api/awsSdk";
 
 type ProductKey = keyof IProduct;
 
@@ -24,8 +24,10 @@ export default function ProductAddForm() {
       e.target as typeof e.target & Record<ProductKey, HTMLInputElement>;
 
     if (!imgFile) return alert("이미지를 등록해 주세요.");
+    const awsS3 = new AwsS3();
+    const thumbnailURL = await awsS3.upload(imgFile, imgFile.name);
 
-    const thumbnailURL = await uploadS3(imgFile, imgFile.name);
+    if (!thumbnailURL) return;
 
     const product = await createProducts({
       title: title.value,
@@ -34,7 +36,7 @@ export default function ProductAddForm() {
       deliveryFee: deliveryFee.value,
       options: options.value,
       thumbnail: thumbnailURL,
-      type: type.value,
+      type: [type.value],
       description: description.value,
     });
 

@@ -1,7 +1,7 @@
 import { IProduct } from "@/app/types/product";
 import { axiosInstance } from "./client";
 
-export const createProducts = async (productData: IProduct) => {
+export const createProducts = async (productData: Omit<IProduct, "_id">) => {
   const { data } = await axiosInstance.post("/api/products", productData);
 
   if (data) alert("정상적으로 생성되었습니다.");
