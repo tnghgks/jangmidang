@@ -8,4 +8,15 @@ export interface IProduct {
   thumbnail: string;
   description: string;
   type: string[];
+  detail: IProductData;
+  detailImgs: string[];
+}
+
+export interface IProductData {
+  type: string;
+  producer: string;
+  expirationDate: string;
+  countByPackaging: string;
+  materials: string;
+  nutrient: string;
 }
