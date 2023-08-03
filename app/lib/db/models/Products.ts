@@ -1,5 +1,5 @@
 import { IProduct } from "@/app/types/product";
-import { Schema, models, model, Model } from "mongoose";
+import mongoose, { Schema, models, model, Model } from "mongoose";
 
 export const ProductSchema = new Schema({
   title: {
@@ -16,6 +16,8 @@ export const ProductSchema = new Schema({
   thumbnail: String,
   type: [String],
   description: String,
+  detail: { type: mongoose.Schema.Types.ObjectId, ref: "ProductData" },
+  detailImgs: [String],
 });
 
 const Products: Model<IProduct> = models?.Products || model("Products", ProductSchema);
