@@ -1,10 +1,10 @@
 "use client";
 
-import { SyntheticEvent, useContext, useRef, useState } from "react";
+import { SyntheticEvent, useContext, useEffect, useRef, useState } from "react";
 import Input from "../atoms/Input";
 import Button from "../atoms/Button";
-import { createProducts } from "@/app/lib/api/product";
-import { IProduct } from "@/app/types/product";
+import { createProducts, getProductDetails } from "@/app/lib/api/product";
+import { IProduct, IProductData } from "@/app/types/product";
 import { ModalContext } from "./Modal";
 import { useRouter } from "next/navigation";
 import AwsS3 from "@/app/lib/api/awsSdk";
@@ -15,12 +15,20 @@ export default function ProductAddForm() {
   const router = useRouter();
   const [imgSrc, setImgSrc] = useState("");
   const [imgFile, setImgFile] = useState<File>();
+  const [detailList, setDetailList] = useState<IProductData[]>();
   const imgRef = useRef<HTMLInputElement>(null);
   const onClose = useContext(ModalContext);
 
+  useEffect(() => {
+    (async () => {
+      const data = await getProductDetails();
+      setDetailList(data);
+    })();
+  }, []);
+
   const handleSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
-    const { title, price, count, deliveryFee, options, type, description } =
+    const { title, price, count, deliveryFee, detail, options, type, description } =
       e.target as typeof e.target & Record<ProductKey, HTMLInputElement>;
 
     if (!imgFile) return alert("이미지를 등록해 주세요.");
@@ -38,6 +46,8 @@ export default function ProductAddForm() {
       thumbnail: thumbnailURL,
       type: [type.value],
       description: description.value,
+      detail: detail.value,
+      detailImgs: [],
     });
 
     if (product) onClose();
@@ -91,6 +101,13 @@ export default function ProductAddForm() {
       <Input name="options" scale="md" shadow="md" placeholder="옵션 " className="w-full" />
       <Input name="type" scale="md" shadow="md" placeholder="타입 " className="w-full" />
       <Input name="description" scale="md" shadow="md" placeholder="소개 " className="w-full" />
+      <select defaultValue={2} name="detail" id="detail" className="w-full">
+        {detailList?.map((el, i) => (
+          <option value={el._id} key={i}>
+            {el.title}
+          </option>
+        ))}
+      </select>
       <Button
         type="submit"
         rounded="full"
