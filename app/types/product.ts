@@ -19,4 +19,6 @@ export interface IProductData {
   countByPackaging: string;
   materials: string;
   nutrient: string;
+  title: string;
+  _id: string;
 }
